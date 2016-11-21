@@ -1,1 +1,1 @@
-docker pull spotify/docker-gc
+docker pull traefik

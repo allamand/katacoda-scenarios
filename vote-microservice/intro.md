@@ -1,8 +1,5 @@
-spotify/docker-gc is a simple Docker container and image garbage collection script, run as a container.
 
-It allows you to cleanup a host with : 
+This Course aims to provide you with advanced skills on deploying app on a Docker Swarm  Cluster.
 
-* Containers that exited more than an hour ago are removed.
-* Images that don't belong to any remaining container after that are removed.
-* Base images used by container are not removed unlike docker rmi $(docker images -q)
+We're going to use Docker-Compose to deploy applications, and docker tools to seee how it spread on a Swarm cluster.
 
