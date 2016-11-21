@@ -4,7 +4,7 @@
     "difficulty": "medium",
     "time": "10 minutes",
     "backend": {
-	"imageid": "docker"
+	"imageid": "docker-node"
     },
     "environment": {
 	"uimessage1": "\u001b[34mYour Interactive Bash Terminal.\r\nTry it!\u001b[m\r\n",

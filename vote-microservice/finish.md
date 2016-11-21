@@ -1,3 +1,6 @@
-In this scenario we explored how to use the _spotify/docker-gc_ to perform simple container garbage collection to ensure that unused containers and images are cleaned up.
 
-To run this in production, combine the Docker commands explained here with a scheduler, such as Cron or Mesos, to run your container task at certain points during the day.
+In this scenario we explored how to use a Docker Swarm Cluster, how applications are spreading in it, and how to use docker-compose to manage your deployments.
+
+To run this in production, some of the tooling will be different to adapt on multi-tenancy concern and security.
+
+This course is just for you to see how the basic technologies are working one with each others.

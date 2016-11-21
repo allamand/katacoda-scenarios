@@ -49,7 +49,7 @@ you can access the dashboard using :
 
 ## Install Docker compose
 
-`curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-``uname -s``-``uname -m`` > ./docker-compose`{{execute}}
+```curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose```{{execute}}
 
 `chmod +x ./docker-compose && sudo mv ./docker-compose /usr/local/bin/docker-compose`{{execute}}
 
@@ -58,6 +58,10 @@ you can access the dashboard using :
 
 `sudo apt-get update`{{execute}} et `sudo apt-get install -y docker-engine`{{execute}}.
 Check that install is ok `docker -v`{{execute}}
+
+```sudo apt-get update \
+   sudo apt-get install -y docker-engine \
+   docker -v```{{execute}}
 
 ## Clone the vote microservice stack
 
