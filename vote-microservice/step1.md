@@ -54,6 +54,14 @@ you can access the dashboard using :
 `chmod +x ./docker-compose && sudo mv ./docker-compose /usr/local/bin/docker-compose`{{execute}}
 
 
+voila
+
+```curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose \
+   chmod +x ./docker-compose && sudo mv ./docker-compose /usr/local/bin/docker-compose```{{execute}}
+
+
+
+
 ## Install Docker 1.12
 
 `sudo apt-get update`{{execute}} et `sudo apt-get install -y docker-engine`{{execute}}.
