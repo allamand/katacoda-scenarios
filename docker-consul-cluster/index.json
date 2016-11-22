@@ -11,7 +11,7 @@
       "title": "Step 2 - Add Additional Agents",
       "text": "step2.md"
     },{
-      "title": "Step 3 - Simulate a Node Failure",
+      "title": "Step 3 - Simulate a Node Failure (Optional)",
       "text": "step3.md"
     },{
       "title": "Step 4 - Consul UI",

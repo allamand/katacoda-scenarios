@@ -16,4 +16,9 @@ When we launch our two additional agents we tell them how to locate the cluster.
 
 We will now have a Consul cluster running on our Docker daemon. You can see the communications and events via the logs `docker logs c1`{{execute}}
 
+
+We can list all the members of a Consul cluster by asking one of our Containers `docker exec -t c1 consul members`{{execute}}
+or another: `docker exec -t c3 consul members`{{execute}}
+
+
 In the next step we explore what happens if nodes fail.
