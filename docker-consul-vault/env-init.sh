@@ -21,5 +21,3 @@ echo "export VAULT_ADDR=http://127.0.0.1:8200" >> .profile
 docker pull busybox
 docker pull consul:v0.6.4
 docker pull cgswong/vault:0.5.3
-
-
