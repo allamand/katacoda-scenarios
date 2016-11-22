@@ -13,7 +13,7 @@
 	"hideintro": false,
 	"hidefinish": false
     },
-    "files": ["docker-compose.yml"],
+    "files": ["docker-compose.yml", "docker-compose-test.yml", "docker-compose-test2.yml"],
     "details": {
 	"steps": [{
 	    "title": "Step 1 - Deploy the Load Balancer",
