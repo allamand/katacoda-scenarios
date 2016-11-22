@@ -25,6 +25,14 @@ traefik:
     - /dev/null:/traefik.toml
 ```
 
+
+
+<pre class="file" data-filename="test.txt" data-target="replace">code...</pre>
+<pre class="file" data-filename="docker-compose.yml" data-target="prepend">code...</pre>
+<pre class="file" data-filename="docker-compose.yml" data-target="append">this is a test</pre>
+
+
+
 The Load Balancer is configured to listen on port 80,443 HTTP traefik, and also procide a web dashboard that is exposed on port 8080.
 
 The use of docker.sok allows traefik to listen to the Docker Host Daemon events, and reconfigure itself when containers are started/stopped. 
