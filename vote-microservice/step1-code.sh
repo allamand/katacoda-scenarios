@@ -17,4 +17,5 @@ echo "step1-code"
 #echo "https://[[CLIENT_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com"
 
 export CLIENT_SUBDOMAIN=[[CLIENT_SUBDOMAIN]]
+export HOST_SUBDOMAIN=[[HOST_SUBDOMAIN]]
 export KATACODA_HOST=[[KATACODA_HOST]]

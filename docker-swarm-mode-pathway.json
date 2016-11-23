@@ -1,0 +1,12 @@
+{
+  "title": "Docker Swarm Mode (Docker>1.12)",
+  "icon": "fa-docker",
+  "description": "Learn a selection of useful Docker Commands",
+  "courses": [
+    {
+      "course_id": "hello-world",
+      "title": "Docker Hello World",
+      "description": "This is a Course Hello-World"
+    }
+  ]
+}

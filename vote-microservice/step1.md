@@ -36,7 +36,7 @@ networks:
   net:
 </pre>
 
-This allow to use a docker network to plus the container on.
+This allow to use a docker network to plug the container on.
 
 ## Launch the LoadBalancer
 
@@ -57,22 +57,28 @@ Traefik also have a Web UI which has been deployed on port 8080 : https://[[HOST
 
 > In production you'll need to ensure the UI is only private & secure
 
-## Try it!
+You can see the logs of your application using docker-compose `docker-compose -p traefik logs`{{execute}}
+or using docker `docker logs traefik_traefik_1`{{execute}}
+
+
+## Add Services and plug them with the Traefik Load Balancer
 
 With the Traefik load balancer configured to listen and proxy traffic to containers, based on thecontainers's metadatas, we need to configure thoses metadata as docker labels:
 
-### route With Path
+### routing based on URL Path
 
 <pre class="file" data-filename="docker-compose-test.yml" data-target="replace">
 version: "2"
 
 services:
   test:
-    image: nginx
+    image: katacoda/docker-http-server
 	expose: 
 	  - 80
     labels:
-      - "traefik.frontend.rule=Path:/test"
+      - "traefik.backend=test"
+      - "traefik.port=80"
+	  - "traefik.frontend.rule=Path:/route1/"
 	  - "traefik.docker.network=traefik_net"				
     networks:
 	  - traefik_net
@@ -83,21 +89,36 @@ networks:
 
 launch the container `docker-compose -p test -f docker-compose-test.yml up -d`{{execute}}
 
-We have attached the test container on the network traefik_net. You can see that on this network we have now 2 containers connects : `docker network inspect traefik_net`{{execute}}`
+We have attached the test container on the network **traefik_net**. we have now 2 containers connected to that network we can inspect with : `docker network inspect traefik_net`{{execute}}`
 
 
-### route With Host
+>Check the Traefik Dashboard and you will see that a new Entry was added. https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
+
+If we request the Proxy with the **/route1/** path `curl http://docker/route1/index.html`{{execute}} we can see in response that it is the test container that make the response
+
+You can Request the service from : https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/route1/
+
+
+You can request the logs of the Traefik Load Balancer:  `docker logs traefik_traefik_1`{{execute}}
+
+
+
+### routing based on HOST Header
+
+This is the default routing mode of Traefik
 
 <pre class="file" data-filename="docker-compose-test2.yml" data-target="replace">
 version: "2"
 
 services:
   test2:
-    image: nginx
+    image: katacoda/docker-http-server:v2
 	expose: 
 	  - 80
     labels:
-      - "traefik.frontend.rule=Host:[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com"
+      - "traefik.backend=test2"
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:${HOST_SUBDOMAIN}-80-${KATACODA_HOST}.environments.katacoda.com"
 	  - "traefik.docker.network=traefik_net"				
     networks:
 	  - traefik_net
@@ -109,70 +130,25 @@ networks:
 execute `docker-compose -p test2 -f docker-compose-test2.yml up -d`{{execute}}
 
 
-### Define a proxification labels example.
-
-Launch the LoadBalancer
-
-`docker-compose up -d`{{execute}}
+We have attached the test2 container on the network **traefik_net**. we have now 3 containers connected to that network we can inspect with : `docker network inspect traefik_net`{{execute}}`
 
 
-## Install Docker compose
+>Check the Traefik Dashboard and you will see that a new Entry was added https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
 
-```curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose```{{execute}}
+You should be able to reach your nginx at the Url defined in the compose file :
 
-`chmod +x ./docker-compose && sudo mv ./docker-compose /usr/local/bin/docker-compose`{{execute}}
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com
 
-
-voila
-
-```curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose \
-   chmod +x ./docker-compose && sudo mv ./docker-compose /usr/local/bin/docker-compose```{{execute}}
+>Note: In the Katacoda context, there is already a complicated routing mechanism that allows you to reach your test environnement. This is configure using **$HOST_SUBDOMAIN** and **$KATACODA_HOST** Variables which we reuse in the docker traefik label.
 
 
+If we request the Proxy with the specific **Host** header `curl -H "Host: [[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com" http://docker/`{{execute}} we can see in response that it is the nginx that make the response
+
+We can check logs on traefik `docker logs traefik_traefik_1`{{execute}}
 
 
-## Install Docker 1.12
+# Task: Scaling service
 
-`sudo apt-get update`{{execute}} et `sudo apt-get install -y docker-engine`{{execute}}.
-Check that install is ok `docker -v`{{execute}}
-
-```sudo apt-get update \
-   sudo apt-get install -y docker-engine \
-   docker -v```{{execute}}
-
-## Clone the vote microservice stack
-
-`git clone https://github.com/philipz/example-voting-app`{{execute}}
-
-git clone https://github.com/bfirsh/serverless-docker-voting-app
+Please Try now to scale service test2 to see how it is handle by the Traefik load balancer
 
 
-# Credits
-
-https://www.katacoda.com/philipz/
-https://github.com/philipz/docker_workshop
-https://philipz.github.io/vote_microservice.html
-https://www.katacoda.com/mesoshq
-
-https://github.com/inyoungcho/katacoda-scenarios
-https://www.katacoda.com/inyoungcho
-
-machine:
-  image: katacoda/docker-http-server
-  labels:
-    - "traefik.backend=machine-echo"
-    - "traefik.frontend.rule=Host:machine-echo.example.com"
-	
-echo:
-  image: katacoda/docker-http-server:v2
-  labels:
-    - "traefik.backend=echo"
-    - "traefik.frontend.rule=Host:echo-echo.example.com"
-	
-curl -H Host:machine-echo.example.com http://host01	
-
-
-docker-compose scale machine=2 
-
-https://2886795288-8080-ollie01.environments.katacoda.com/dashboard/#/
-https://2886795305-8080-ollie01.environments.katacoda.com/
