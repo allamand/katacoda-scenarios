@@ -1,21 +1,28 @@
-## Container Age
 
-By default, _docker-gc_ will remove containers which have been stopped for an hour. If you require containers to stay around longer then set the environment variable _GRACE_PERIOD_SECONDS_ when launching the container.
 
-`docker run --rm \
-   -e GRACE_PERIOD_SECONDS=86400 \
-   -v /var/run/docker.sock:/var/run/docker.sock \
-   -v /etc:/etc spotify/docker-gc`{{execute}}
+We Have see how we can leverage Docker labels to dynamically customize our LoadBalancing routing rules.
 
-## Excluding Containers
-If you wish to exclude certain containers from being cleaned up, even when stopped, then add them to a file called _/etc/docker-gc-exclude-containers_. Each line should represent a grep style pattern relating to the container name.
+Now let's try to launch a more complicated Microservice application.
 
-<pre class="file">
-*-data
-config
-</pre>
+We will uses the docker's vote microservice application with custom labels to be used within our traefik loadbalancer.
 
-## Excluding Images
+## Example voting microservice application
 
-Likewise to above, you can exclude particular images by creating a file called _/etc/docker-gc-exclude_.
+First you need to Retrieve voting-app application 
+
+`git clone https://github.com/allamand/example-voting-app.git`{{execute}}
+
+Go to the stack directory 
+
+`cd example-voting-app`{{execute}} 
+
+and launch the app using docker-compose 
+
+`docker-compose -d docker-compose-katacoda.yml up -d`{{execute}}.
+
+> You can take a coffee since this may take a little to finish : It will build each part of the microservice app (node.js, npm, dot.net, redis, postgresql)
+
+You can view the status of your deployment using `docker-compose ps`{{execute}}
+
+https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
 

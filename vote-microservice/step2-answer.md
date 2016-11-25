@@ -4,7 +4,7 @@
 
 To scale the service you need to type :
 
-docker-compose -p test2 -f docker-compose-test2.yml scale test2=5
+`docker-compose -p test2 -f docker-compose-test2.yml scale test2=5`{{execute}}
 
 test locally :`curl -H "Host: [[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com" http://docker/`{{execute}}
 
