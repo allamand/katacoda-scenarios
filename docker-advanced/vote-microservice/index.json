@@ -1,8 +1,8 @@
 {
-    "title": "Docker Vote Microservice",
-    "description": "Learn how to deploy the vote microservice apps",
+    "title": "LoadBalance multi-services with Docker",
+    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services"
     "difficulty": "medium",
-    "time": "10 minutes",
+    "time": "15-20 minutes",
     "backend": {
 	"imageid": "docker-node"
     },
