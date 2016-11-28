@@ -32,5 +32,7 @@ Now run the container using this image. You are expected to figure out what the 
 
 Now figure out the steps to change the text displayed from Hello World to "I have got this" 
 
+>If you've done it Correctly you may need able to see your "Hello-World" at https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/index.html
+
 Stop and remove your container. 
 

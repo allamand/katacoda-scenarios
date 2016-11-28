@@ -1,5 +1,4 @@
 docker pull traefik
-
 docker pull postgres:9.4
 docker pull redis:alpine
 docker pull microsoft/dotnet:1.0.0-preview1

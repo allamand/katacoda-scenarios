@@ -23,11 +23,11 @@
 	    "title": "Step 2 - Deploy Application",
 	    "text": "step2.md",
 	    "answer": "step2-answer.md",
-	    "verify": "step2-verify.sh"	    
+	    "verify": "step2-verify.sh"
 	}, {
 	    "title": "Step 3 - Deploy Full Stack Service",
 	    "text": "step3.md",
-	    "code": "step3-code.sh"	    
+	    "code": "step3-code.sh"
 	}],
 	"intro": {
 	    "courseData": "env-init.sh",

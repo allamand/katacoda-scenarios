@@ -4,7 +4,7 @@ While running a single container is useful, it is far more useful to be able to 
 
 Analyze the following `docker-compose.yml` file. 
 
-```
+<pre class="file" data-filename="Dockerfile" data-target="append">
 version: '2'
 
 services:
@@ -20,9 +20,7 @@ services:
     image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: example
-```
-
-You can also get the contents from here: [https://github.com/Flux7Labs/docker-hands-on-lab/blob/master/lab/docker-compose.yml](https://github.com/Flux7Labs/docker-hands-on-lab/blob/master/lab/docker-compose.yml)
+</pre>
 
 Now run this file as:
 `docker-compose up -d`{{execute}}
@@ -30,3 +28,4 @@ Now run this file as:
 
 You may be able to reach you application on the URL https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
+> You have now a Wordpress working ;)
