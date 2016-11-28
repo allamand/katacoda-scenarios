@@ -1,6 +1,6 @@
 {
     "title": "LoadBalance multi-services with Docker",
-    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services"
+    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services",
     "difficulty": "medium",
     "time": "15-20 minutes",
     "backend": {
