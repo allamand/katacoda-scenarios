@@ -26,10 +26,10 @@ We can also used this to reead datas:
 You can also use the HTTP API to interract with the vault:
 
 `curl -H "X-Vault-Token:$VAULT_TOKEN" \
-  -XGET http://docker:8200/v1/secret/api-key`{{execute}}
+  -XGET http://docker:8200/v1/secret/app1/db-password`{{execute}}
 
 and we can extract only fields we wants with :
 
 `curl -s -H  "X-Vault-Token:$VAULT_TOKEN" \
-  -XGET http://docker:8200/v1/secret/api-key \
+  -XGET http://docker:8200/v1/secret/app1/db-password \
     | jq -r .data.value`{{execute}}

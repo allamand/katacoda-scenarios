@@ -1,0 +1,12 @@
+{
+  "title": "On Work Scenarios (unfinished)",
+  "icon": "fa-docker",
+  "description": "This is on work scenarios which may not we working yet",
+  "courses": [
+    {
+      "course_id": "docker-consul-vault",
+      "title": "Secure Secret in Docker with Vault",
+      "description": "Discover what is Vault and how to use it with Docker"
+    }
+  ]
+}

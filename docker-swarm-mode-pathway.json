@@ -1,12 +1,17 @@
 {
-  "title": "Docker Swarm Mode (Docker>1.12)",
-  "icon": "fa-docker",
-  "description": "Learn a selection of useful Docker Commands",
-  "courses": [
-    {
-      "course_id": "hello-world",
-      "title": "Docker Hello World",
-      "description": "This is a Course Hello-World"
-    }
-  ]
+    "title": "Advanced Docker Usage",
+    "icon": "fa-docker",
+    "description": "You will see examples docker usage",
+    "courses": [
+	{
+	    "course_id": "hello-world",
+	    "title": "Docker Hello World",
+	    "description": "This is a Course Hello-World"
+	},
+	{
+	    "course_id": "vote-microservice",
+	    "title": "LoadBalance multi-services with Docker",
+	    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services"
+	}
+    ]
 }
