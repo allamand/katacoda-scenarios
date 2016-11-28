@@ -44,6 +44,7 @@
         "uilayout": "editor",
         "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
     },
+    "files": ["Dockerfile", "docker-compose.yml"],
     "backend": {
         "port": 80,
         "imageid": "docker"

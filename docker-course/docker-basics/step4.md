@@ -13,10 +13,10 @@ You can see its contents by running
 
 Now add the following contents to your Dockerfile. 
 
-`
+<pre class="file" data-filename="Dockerfile" data-target="replace">
 FROM nginx
 COPY index.html /usr/share/nginx/html
-`
+</pre>
 
 The first line is the base image, nginx in this case. The second list is copying the index.html file in the location where nginx looks for the index.html. 
 

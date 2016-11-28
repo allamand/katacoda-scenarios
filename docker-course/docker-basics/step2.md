@@ -28,7 +28,11 @@ You can also work with a container interatively and get on a prompt to look arou
 
 ## Execute interactive shell inside the container
 
-`docker run -it busybox sh`
+`docker run -it busybox sh`{{execute}}
 
 You can learn more about your container here, e.g., run `ifconfig` to see what IP has Docker assigned to the container. 
+
+>type `exit` to exit from the container
+
+
 
