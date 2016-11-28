@@ -1,0 +1,17 @@
+{
+    "title": "Advanced Docker Usage",
+    "icon": "fa-docker",
+    "description": "You will see examples docker usage",
+    "courses": [
+	{
+	    "course_id": "docker-consul-cluster",
+	    "title": "Using Consul With Docker",
+	    "description": "Set-up a 3 note resilient Consul Key/value store"
+	},	
+	{
+	    "course_id": "vote-microservice",
+	    "title": "LoadBalance multi-services with Docker",
+	    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services"
+	}
+    ]
+}
