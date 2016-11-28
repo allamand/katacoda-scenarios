@@ -1,0 +1,40 @@
+{
+    "title": "LoadBalance multi-services with Docker",
+    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services",
+    "difficulty": "medium",
+    "time": "15-20 minutes",
+    "backend": {
+	"imageid": "docker-node"
+    },
+    "environment": {
+	"uimessage1": "\u001b[34mYour Interactive Bash Terminal.\r\nTry it!\u001b[m\r\n",
+	"uilayout": "editor",
+	"uisettings": "docker-compose.yml",
+	"hideintro": false,
+	"hidefinish": false
+    },
+    "files": ["docker-compose.yml", "docker-compose-test.yml", "docker-compose-test2.yml"],
+    "details": {
+	"steps": [{
+	    "title": "Step 1 - Deploy the Load Balancer",
+	    "text": "step1.md",
+	    "code": "step1-code.sh"
+	}, {
+	    "title": "Step 2 - Deploy Application",
+	    "text": "step2.md",
+	    "answer": "step2-answer.md",
+	    "verify": "step2-verify.sh"	    
+	}, {
+	    "title": "Step 3 - Deploy Full Stack Service",
+	    "text": "step3.md",
+	    "code": "step3-code.sh"	    
+	}],
+	"intro": {
+	    "courseData": "env-init.sh",
+	    "text": "intro.md"
+	},
+	"finish": {
+	    "text": "finish.md"
+	}
+    }
+}
