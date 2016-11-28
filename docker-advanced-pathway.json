@@ -9,7 +9,7 @@
 	    "description": "Set-up a 3 note resilient Consul Key/value store"
 	},	
 	{
-	    "course_id": "vote-microservice",
+	    "course_id": "lb-docker-services",
 	    "title": "LoadBalance multi-services with Docker",
 	    "description": "You will find how to use a Soft LoadBalancer to dynamically target your docker services"
 	}
