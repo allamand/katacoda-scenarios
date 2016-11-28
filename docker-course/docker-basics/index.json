@@ -1,0 +1,51 @@
+{
+    "title": "Docker Basics",
+    "description": "Learn how to launch a Docker container, build an image, and run an entire application",
+    "difficulty": "beginner",
+    "time": "30-45 minutes",
+    "details": {
+        "steps": [
+            {
+                "title": "Step 1 - Run your first container",
+                "text": "step1.md"
+            },
+	    {
+		"title": "Step 2 - Run a more interesting container",
+		"text": "step2.md"
+	    },
+	    {
+		"title": "Step 3 - Container lifecycle and ports",
+		"text": "step3.md"
+	    },
+	    {
+		"title": "Step 4 - Create your own image",
+		"courseData" : "step4-cd.sh",
+		"text" : "step4.md"
+	    },
+	    {
+		"title": "Step 5 - Run a full application",
+		"courseData" : "step5-cd.sh",
+		"text" : "step5.md"
+	    }
+        ],
+        "intro": {
+            "text": "intro.md",
+            "courseData": "courseBase.sh",
+            "credits": ""
+        },
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "files": [
+        "scratch"
+    ],
+    "environment": {
+        "uilayout": "editor",
+        "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\n"
+    },
+    "backend": {
+        "port": 80,
+        "imageid": "docker"
+    }
+}
