@@ -45,6 +45,8 @@ You can request the logs of the Traefik Load Balancer:  `docker logs traefik_tra
 
 You can request the logs of the application `docker-compose -p test -f docker-compose-test.yml logs`{{execute}}
 
+> `Ctrl-C` in console to exit docker-compose logs command
+
 
 
 
@@ -52,13 +54,18 @@ You can request the logs of the application `docker-compose -p test -f docker-co
 
 We can use docker-compose to scale some services of our applications: Exemple, scale 5 instances of the test service:
 
+`docker-compose -p test -f docker-compose-test.yml scale test=5`{{execute}}
 
-You can make local calls to the test service and see the loadbalancing :`curl -H "Host: [[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com" http://docker/`{{execute}}
+Check that you have 5 instances of the service :
+
+`docker-compose -p test -f docker-compose-test.yml ps`{{execute}}
 
 
-You can see that test service has several backend configured in the Traefik UI :
+You can make local calls to the test service and see the loadbalancing :`curl http://docker/route1/`{{execute}}
 
-https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
+
+You can see that test service has several backend configured in the [Traefik Dashboard UI](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com)
+
 
 You can see logs of your tests on Traefik `docker logs traefik_traefik_1`{{execute}}
 
@@ -68,7 +75,7 @@ You can see logs of your tests on Traefik `docker logs traefik_traefik_1`{{execu
 
 we just saw how we can use Traefik to leverage **Path** based routing mechanisms.
 
-Try no to uses traefik with a **Host** based routing mechanism (routing based on the requested Domain Name)...
+Try know to uses traefik with a **Host** based routing mechanism (routing based on the requested Domain Name)...
 
 
 
