@@ -10,10 +10,15 @@ We are going to apply directly the crd manifest, then deploy the CassKop using h
 ## Deploy CassKop's operator
 
 `helm install --name cassandra-demo ./helm/cassandra-k8s-operator`{{execute}}`
-```
 
-check operator's logs: 
+Wait some seconds for the CassKop to be up and runnin
 
-`k logs -l app=cassandra-k8s-operator --tail=10`{{execute}}`
+`k get pods`{{execute}}
 
-quit with Ctrl-C
+
+You can see the operator's logs: 
+
+`k logs -l app=cassandra-k8s-operator `{{execute}}`
+
+For now CassKop is not doing anything, it is waiting for CassandraCluster object creation.
+
