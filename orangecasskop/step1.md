@@ -14,6 +14,12 @@ Wait for all pods to be running
 `k get pods --all-namespaces`{{execute}}
 
 
+## No persistent volume
+
+For the sake of simplicity I will launch the Cassandra without persistent volume to back the data. This is not 
+to replicate in real environment, but it will ease the time to set-up this hand-on.
+
+<!--
 ## Check that the persistent volumes are created
 
 `k get pv`{{execute}}
@@ -30,7 +36,7 @@ local-pv-e7f6fbc3   1000Mi     RWO            Delete           Available        
 local-pv-f30b01a6   1000Mi     RWO            Delete           Available             local-storage             2m
 local-pv-f37d14f0   1951Mi     RWO            Delete           Available             local-storage             2m
 ```
-
+-->
 ## Troubleshooting
 
 If needed you can check for events on the cluster: 
