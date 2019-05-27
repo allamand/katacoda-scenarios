@@ -1,4 +1,5 @@
 #swith user to CassKop directory
+sleep 3
 cd cassandra-k8s-operator
 
 
@@ -17,7 +18,6 @@ cd cassandra-k8s-operator
 #echo "Install local-provisioner"
 kubectl create namespace local-provisioner
 KUBE_NODES=$(kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{" "}')
-kubectl apply -f tools/storageclass-local-storage.yaml
 for n in $KUBE_NODES; do
     echo $n
     for i in `seq -w 1 5`; do
@@ -25,6 +25,7 @@ for n in $KUBE_NODES; do
         ssh -f -q -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $n "mount -t tmpfs pv$i /dind/local-storage/pv$i"
     done
 done
+k apply -f tools/storageclass-local-storage.yaml
 k apply -f tools/local-provisioner.yaml
 
 #kubectl patch cassandracluster cassandra-demo --type json -p '{"spec":{"topology": { "dc": [{"name": "dc1", "nodesPerRacks": "2"}] } } }'
