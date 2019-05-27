@@ -11,7 +11,7 @@ spec:
   dataCapacity: "1Gi"
   dataStorageClass: "local-storage"
   imagepullpolicy: IfNotPresent  
-  checkStatefulsetsAreEqual: true
+  checkStatefulsetsAreEqual: false  # set to false on katacoda because it's an ols version of k8s : 1.10 and we uses some fields in statefulset from 1.13
   hardAntiAffinity: false           # Do we ensure only 1 cassandra on each node ?
   deletePVC: true
   autoPilot: false
