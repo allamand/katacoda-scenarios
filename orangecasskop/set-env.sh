@@ -30,7 +30,7 @@ done
 k apply -f tools/local-provisioner.yaml
 
 
-kubectl patch storageclass local-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+#kubectl patch storageclass local-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 
 kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-
@@ -38,3 +38,4 @@ kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-
 
 #kubectl config set-context $(kubectl config current-context) --namespace=default
 
+#kubectl patch cassandracluster cassandra-demo --type json -p '{"spec":{"topology": { "dc": [{"name": "dc1", "nodesPerRacks": "2"}] } } }'

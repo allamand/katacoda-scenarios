@@ -33,4 +33,3 @@ spec:
         rack:
           - name: rack1
           - name: rack2
-          - name: rack3
