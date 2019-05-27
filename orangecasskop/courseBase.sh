@@ -8,6 +8,7 @@ helm init
 #kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 #kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
+cd cassandra-k8s-operator
 
 echo "Install local-provisioner"
 kubectl create namespace local-provisioner
