@@ -29,3 +29,8 @@ k apply -f tools/storageclass-local-storage.yaml
 k apply -f tools/local-provisioner.yaml
 
 #kubectl patch cassandracluster cassandra-demo --type json -p '{"spec":{"topology": { "dc": [{"name": "dc1", "nodesPerRacks": "2"}] } } }'
+
+#kubectl patch cassandracluster cassandra-demo --dry-run -p '{"spec":{"topology": { "dc": [{"name": "dc1", "nodesPerRacks": "2"}] } } }' --type merge
+
+kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": { "dc": [{"name": "dc1", "nodesPerRacks": "2"}, "rack": [{"name": "rack1"}],[{"name": "rack2"}] } } }' --type merge --dry-run -o yaml
+
