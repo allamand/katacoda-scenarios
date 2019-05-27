@@ -19,6 +19,13 @@ Wait for all pods to be running
 For the sake of simplicity I will launch the Cassandra without persistent volume to back the data. This is not 
 to replicate in real environment, but it will ease the time to set-up this hand-on.
 
+CassKop will warn you in it's log with messages like 
+
+```
+level=warning msg="[cassandra-demo]: No Spec.DataCapacity was specified -> You Cluster WILL NOT HAVE PERSISTENT
+DATA!!!!!"
+```
+
 <!--
 ## Check that the persistent volumes are created
 

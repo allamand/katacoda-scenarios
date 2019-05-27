@@ -7,16 +7,24 @@
     "details": {
         "steps": [
             {
-                "title": "Deploying CassKop",
+                "title": "Check k8s cluster",
                 "text": "step1.md"
             },
             {
-                "title": "Creating your Cassandra cluster",
+                "title": "Deploying CassKop",
                 "text": "step2.md"
             },
             {
-                "title": "Step 3",
+                "title": "Creating your Cassandra cluster",
                 "text": "step3.md"
+            },
+            {
+                "title": "Scaling Up the cluster",
+                "text": "step4.md"
+            },
+            {
+                "title": "Scaling Down the cluster",
+                "text": "step5.md"
             }
         ],
         "intro": {
