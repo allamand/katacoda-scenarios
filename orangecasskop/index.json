@@ -26,7 +26,7 @@
             "credits": "Orange"
         },
         "assets": {
-            "client": [
+            "master": [
                 {
                     "file": "cassandracluster-katacoda.yaml",
                     "target": "~/"
