@@ -1,49 +1,33 @@
+# Deploy CassKop 
 
+CassKop is composed of a specific CRD (Custom Ressource Definition) and a controller.
+We are going to apply directly the crd manifest, then deploy the CassKop using helm
 
-# Deployment of a Cassandra cluster 
+First, you must go in the project directory `cd cassandra-k8s-operator`{{execute}}
 
-Casskop work by default with it's custom [Cassandra image](https://github.com/Orange-OpenSource/cassandra-image) which
-can be customize with ConfigMap
+## Deploy CassKop CRD
 
-## Create our Cassandra configuration
+`k apply -f deploy/crds/db_v1alpha1_cassandracluster_crd.yaml`{{execute}}
 
-`kubectl apply -f samples/cassandra-configmap-v1.yaml`{{execute}}
+## Deploy CassKop's operator
 
+`helm install --name cassandra-demo ./helm/cassandra-k8s-operator`{{execute}}
 
-Normally CassKop can be configure to spread it's node with a dc/rack aware topology configuration where we uses
-kubernetes nodes labels to associated Cassandra's dc/rack spreading mode.
-
-With this Katacoda example, there is no enough nodes, so we are not going to uses labels, but you can find others
-examples with labels in the sample directory.
-
-## Deploy our Cassandra cluster demo
-
-With the following file, CassKop will start a 2 node Cassandra Cluster
-
-`k apply -f samples/cassandracluster.yaml`{{execute}}
-
-you can see the pod creation 
+Wait some seconds for the CassKop to be up and runnin
 
 `k get pods`{{execute}}
 
 
-you can see the log of the new Cassandra pod starting :
+You can see the operator's logs: 
 
-`k logs  cassandra-demo-dc1-rack1-0`{{execute}}
+`k logs -l app=cassandra-k8s-operator`{{execute}}
 
+For now CassKop is not doing anything, it is waiting for CassandraCluster object creation.
 
+## Check that we have local storage available
 
-You can follow the logs of CassKop 
+`k get storageclass`{{execute}}
 
-`k logs -f $(k get pods -l app=cassandra-k8s-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}')`{{execute}}
+the local provisionner may already have created some persistent volumes let's check that:
 
-> Ctrl-C to exit
-
-
-## Troubleshooting
-
-If something get wrong, we can check kubernetes events
-
-`make events`{{execute}}
-
-
+`k get pv`{{execute}}

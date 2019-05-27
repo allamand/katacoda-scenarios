@@ -1,33 +1,13 @@
-# Deploy CassKop 
+# Check configuration
 
-CassKop is composed of a specific CRD (Custom Ressource Definition) and a controller.
-We are going to apply directly the crd manifest, then deploy the CassKop using helm
+You should have 2 node kubernetes cluster (master and node0)
 
-First, you must go in the project directory `cd cassandra-k8s-operator`{{execute}}
-
-## Deploy CassKop CRD
-
-`k apply -f deploy/crds/db_v1alpha1_cassandracluster_crd.yaml`{{execute}}
-
-## Deploy CassKop's operator
-
-`helm install --name cassandra-demo ./helm/cassandra-k8s-operator`{{execute}}
-
-Wait some seconds for the CassKop to be up and runnin
-
-`k get pods`{{execute}}
+`k get nodes`{{execute}}
 
 
-You can see the operator's logs: 
 
-`k logs -l app=cassandra-k8s-operator`{{execute}}
+## Troubleshooting
 
-For now CassKop is not doing anything, it is waiting for CassandraCluster object creation.
+If needed you can check for events on the cluster: 
 
-## Check that we have local storage available
-
-`k get storageclass`{{execute}}
-
-the local provisionner may already have created some persistent volumes let's check that:
-
-`k get pv`{{execute}}
+`kubectl get events --sort-by .metadata.creationTimestamp --all-namespaces`{{execute}}
