@@ -3,8 +3,6 @@
 CassKop is composed of a specific CRD (Custom Ressource Definition) and a controller.
 We are going to apply directly the crd manifest, then deploy the CassKop using helm
 
-First, you must go in the project directory `cd cassandra-k8s-operator`{{execute}}
-
 ## Deploy CassKop CRD
 
 `k apply -f deploy/crds/db_v1alpha1_cassandracluster_crd.yaml`{{execute}}

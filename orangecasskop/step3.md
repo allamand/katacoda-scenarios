@@ -24,7 +24,7 @@ With the following file, CassKop will start a 2 node Cassandra Cluster
 
 you can see the pod creation 
 
-`k get pods`{{execute}}
+`k get pods -o wide`{{execute}}
 
 
 you can see the log of the new Cassandra pod starting :

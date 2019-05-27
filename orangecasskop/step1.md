@@ -7,27 +7,29 @@ You should have 2 node kubernetes cluster (master and node0)
 `k get nodes`{{execute}}
 
 
-## Install local-provisioner for local storage
+## Check installation of local-provisioner for local storage
 
-`kubectl create namespace local-provisioner
-kubectl config set-context $(kubectl config current-context) --namespace=local-provisioner
-KUBE_NODES=$(kubectl get nodes -o jsonpath='{range .items[*]}{.metadata.name}{" "}')
-NB_PV=5
+Wait for all pods to be running
 
-kubectl apply -f tools/storageclass-local-storage.yaml
-
-for n in $KUBE_NODES; do
-    echo $n
-    for i in `seq -w 1 $NB_PV`; do
-        ssh -f -q -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $n "mkdir -p /dind/local-storage/pv$i"
-        ssh -f -q -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $n "mount -t tmpfs pv$i /dind/local-storage/pv$i"
-    done
-done
-k apply -f tools/local-provisioner.yaml
-kubectl config set-context $(kubectl config current-context) --namespace=default`{{execute}}
+`k get pods --all-namespaces`{{execute}}
 
 
+## Check that the persistent volumes are created
 
+`k get pv`{{execute}}
+```
+NAME                CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS    REASON    AGE
+local-pv-12f93e0a   1951Mi     RWO            Delete           Available             local-storage             2m
+local-pv-2018d83c   1951Mi     RWO            Delete           Available             local-storage             2m
+local-pv-32a48e67   1951Mi     RWO            Delete           Available             local-storage             2m
+local-pv-3bea2b09   1000Mi     RWO            Delete           Available             local-storage             2m
+local-pv-6585b3a0   1000Mi     RWO            Delete           Available             local-storage             2m
+local-pv-69823ebf   1000Mi     RWO            Delete           Available             local-storage             2m
+local-pv-de1034d    1951Mi     RWO            Delete           Available             local-storage             2m
+local-pv-e7f6fbc3   1000Mi     RWO            Delete           Available             local-storage             2m
+local-pv-f30b01a6   1000Mi     RWO            Delete           Available             local-storage             2m
+local-pv-f37d14f0   1951Mi     RWO            Delete           Available             local-storage             2m
+```
 
 ## Troubleshooting
 

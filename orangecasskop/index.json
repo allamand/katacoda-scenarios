@@ -25,6 +25,14 @@
             "code": "set-env.sh",
             "credits": "Orange"
         },
+        "assets": {
+            "client": [
+                {
+                    "file": "cassandracluster-katacoda.yaml",
+                    "target": "~/"
+                }
+            ]
+        },
         "finish": {
             "text": "finish.md"
         }
