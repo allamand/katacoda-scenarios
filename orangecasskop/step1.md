@@ -5,6 +5,11 @@
 You should have 2 node kubernetes cluster (master and node0)
 
 `k get nodes`{{execute}}
+```
+```
+
+> If you don't see 2 kubernetes nodes or if the directory cassandra-k8s-operator is missing, please redresh the page
+> while something in the init may have gone wrong..
 
 
 ## Check installation of local-provisioner for local storage
