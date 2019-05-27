@@ -13,6 +13,7 @@ helm init
 #kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 cd cassandra-k8s-operator
+git checkout pipeline
 
 echo "Install local-provisioner"
 kubectl create namespace local-provisioner
