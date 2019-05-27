@@ -24,3 +24,10 @@ You can see the operator's logs:
 
 For now CassKop is not doing anything, it is waiting for CassandraCluster object creation.
 
+## Check that we have local storage available
+
+`k get storageclass`{{execute}}
+
+the local provisionner may already have created some persistent volumes let's check that:
+
+`k get pv`{{execute}}
