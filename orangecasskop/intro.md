@@ -12,8 +12,7 @@ get some pod sheduled.
 
 ### No persistent volume
 
-For the sake of simplicity I will launch the Cassandra without persistent volume to back the data. This is not 
-to replicate in real environment, but it will ease the time to set-up this hand-on.
+For the sake of simplicity for this hands-on, we launch each Cassandra without persistent volume to back the data. 
 
 CassKop will warn you in it's log with messages like 
 

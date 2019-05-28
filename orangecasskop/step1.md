@@ -1,4 +1,9 @@
-# Configure the Cluster
+
+Before starting the lab, let's check pre-requisites are OK
+
+## Check you get the code
+
+On the terminal, you must see the content listing of the CassKop GitHub repository
 
 ## Check configuration
 
@@ -6,30 +11,21 @@ You should have 2 node kubernetes cluster (master and node0)
 
 `k get nodes`{{execute}}
 ```
+NAME      STATUS    ROLES     AGE       VERSION
+master    Ready     master    1h        v1.11.3
+node01    Ready     <none>    1h        v1.11.3
 ```
 
-> If you don't see 2 kubernetes nodes or if the directory cassandra-k8s-operator is missing, please redresh the page
+> If you don't see 2 kubernetes nodes or if the directory cassandra-k8s-operator is missing, please refresh the page
 > while something in the init may have gone wrong..
 
 
-## Check installation of local-provisioner for local storage
+## Check all pods are running
 
-Wait for all pods to be running
 
 `k get pods --all-namespaces`{{execute}}
 
 
-## No persistent volume
-
-For the sake of simplicity I will launch the Cassandra without persistent volume to back the data. This is not 
-to replicate in real environment, but it will ease the time to set-up this hand-on.
-
-CassKop will warn you in it's log with messages like 
-
-```
-level=warning msg="[cassandra-demo]: No Spec.DataCapacity was specified -> You Cluster WILL NOT HAVE PERSISTENT
-DATA!!!!!"
-```
 
 <!--
 ## Check that the persistent volumes are created
