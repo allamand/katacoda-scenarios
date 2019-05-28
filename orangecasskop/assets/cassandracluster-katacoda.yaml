@@ -21,10 +21,10 @@ spec:
   runAsUser: 1000
   resources:         
     requests:
-      cpu: 500m
+      cpu: 700m
       memory: 1Gi
     limits:
-      cpu: 500m
+      cpu: 700m
       memory: 1Gi
   topology:
     dc:

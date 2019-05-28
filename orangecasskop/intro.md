@@ -7,9 +7,19 @@ We can interract directly with this new objects using kubectl.
 
 ## Configuration
 
-In this course we have installed [Rancher local path provisioner](https://github.com/rancher/local-path-provisioner) to
-let CassKop retrieve local volume dynamically.
-
-
 We have a very small 2 nodes kubernetes cluster with 1 master and 1 node, and we have untaint the master so that it can
 get some pod sheduled.
+
+### No persistent volume
+
+For the sake of simplicity I will launch the Cassandra without persistent volume to back the data. This is not 
+to replicate in real environment, but it will ease the time to set-up this hand-on.
+
+CassKop will warn you in it's log with messages like 
+
+```
+level=warning msg="[cassandra-demo]: No Spec.DataCapacity was specified -> You Cluster WILL NOT HAVE PERSISTENT
+DATA!!!!!"
+```
+
+

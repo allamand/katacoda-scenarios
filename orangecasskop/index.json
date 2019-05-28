@@ -47,7 +47,7 @@
     },
     "environment": {
         "uilayout": "terminal",
-        "uimessage1": "\u001b[32mYour Interactive Hands On Lab Terminal\u001b[m\r\n"
+        "uimessage1": "\u001b[32mYour Interactive Hands On Lab Terminal - Please wait a little more while setup is ongoing\u001b[m\r\n"
     },
     "backend": {
         "port": 8080,
