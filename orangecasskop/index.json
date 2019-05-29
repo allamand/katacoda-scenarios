@@ -1,5 +1,5 @@
 {
-    "icon": "fa-openshift",
+    "icon": "kubernetes",
     "title": "CassKop - Cassandra Kubernetes operator",
     "description": "Manage Cassandra Clusters on Kubernetes",
     "difficulty": "beginner",
@@ -51,6 +51,7 @@
     },
     "backend": {
         "port": 8080,
-        "imageid": "kubernetes-cluster-running"
+        "imageid": "kubernetes-cluster",
+        "oldimageid": "kubernetes-cluster-running"
     }
 }

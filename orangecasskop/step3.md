@@ -26,6 +26,7 @@ you can see the pod creation
 
 `k get pods -o wide`{{execute}}
 
+> It may take near 1-2 minutes for each Cassandra pod to boot
 
 you can see the log of the new Cassandra pod starting :
 
