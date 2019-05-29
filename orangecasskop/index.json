@@ -51,7 +51,6 @@
     },
     "backend": {
         "port": 8080,
-        "imageid": "kubernetes-cluster",
-        "oldimageid": "kubernetes-cluster-running"
+        "imageid": "kubernetes-cluster-running"
     }
 }
