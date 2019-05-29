@@ -61,3 +61,15 @@ When the ScaleUp is Done :
 we can do a data cleanup using the CassKop plugin:
 
 
+`kubectl casskop cleanup --prefix cassandra-demo-dc1`{{execute}}
+
+
+We can see that the status of cassandra-demo CassandraCluster object will reflect the operation status of each pods.
+
+CassKop will also updates labels on each pods we can see that with :
+
+`for x in `seq 1 2`; do
+ echo cassandra-demo-dc1-rack$x;
+ kubectl label pod cassandra-demo-dc1-rack$x-0 --list | grep operation ; echo ""
+ kubectl label pod cassandra-demo-dc1-rack$x-1 --list | grep operation ; echo ""
+done`{{execute}}

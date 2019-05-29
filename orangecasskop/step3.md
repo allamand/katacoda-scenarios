@@ -28,11 +28,13 @@ you can see the pod creation
 
 > It may take near 1-2 minutes for each Cassandra pod to boot
 
-you can see the log of the new Cassandra pod starting :
+you can see the log of the new Cassandra pod starting:
 
 `k logs  cassandra-demo-dc1-rack1-0`{{execute}}
 
+and for second pod:
 
+`k logs  cassandra-demo-dc1-rack2-0`{{execute}}
 
 You can follow the logs of CassKop 
 
