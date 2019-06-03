@@ -32,4 +32,3 @@ spec:
         nodesPerRacks: 1
         rack:
           - name: rack1
-          - name: rack2

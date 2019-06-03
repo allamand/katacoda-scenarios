@@ -18,7 +18,7 @@ examples with labels in the sample directory.
 
 ## Deploy our Cassandra cluster demo
 
-With the following file, CassKop will start a 2 node Cassandra Cluster
+With the following file, CassKop will start a 1 node Cassandra Cluster in 1 dc/rack
 
 `k apply -f ~/cassandracluster-katacoda.yaml`{{execute}}
 
@@ -60,20 +60,6 @@ Status:
         Start Time:  2019-05-27T12:55:48Z
         Status:      Done
       Phase:         Running
-      Pod Last Operation:
-    Dc 1 - Rack 2:
-      Cassandra Last Action:
-        Name:      Initializing
-        End Time:  2019-05-27T12:58:01Z
-        Status:    Done
-      Phase:       Running
-      Pod Last Operation:
-    Dc 1 - Rack 3:
-      Cassandra Last Action:
-        Name:      Initializing
-        End Time:  2019-05-27T12:59:59Z
-        Status:    Done
-      Phase:       Running
       Pod Last Operation:
   Last Cluster Action:         Initializing
   Last Cluster Action Status:  Done

@@ -2,9 +2,9 @@
 
 # ScaleUp the cluster
 
-Now we request CassKop to have 2 nodes per each rack, which will add 2 additioanl Cassandra nodes.
+Now we request CassKop to scale nodes number in the rack
 
-`kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": {"dc": [{"name": "dc1","nodesPerRacks":2,"rack": [{"name": "rack1"},{"name": "rack2"}]}]}}}' --type merge
+`kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": {"dc": [{"name": "dc1","nodesPerRacks":2,"rack": [{"name": "rack1"}]}]}}}' --type merge`{{execute}}
 
 We can see the pods creation: 
 

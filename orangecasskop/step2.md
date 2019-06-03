@@ -13,6 +13,9 @@ We are going to apply directly the crd manifest, then deploy the CassKop using h
 
 Wait some seconds for the CassKop to be up and runnin
 
+> if you get this `Error: could not find tiller`
+> execute `helm init`{{execute}} wait a little and try again.
+
 `k get pods -o wide`{{execute}}
 
 
