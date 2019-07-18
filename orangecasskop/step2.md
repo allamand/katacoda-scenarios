@@ -12,12 +12,12 @@ Wait some seconds for the CassKop to be up and runnin
 > if you get this `Error: could not find tiller`
 > execute `helm init`{{execute}} wait a little and try again.
 
-`k get pods -o wide`{{execute}}
+`kubectl get pods -o wide`{{execute}}
 
 
 You can see the operator's logs: 
 
-`k logs -l app=cassandra-operator`{{execute}}
+`kubectl logs -l app=cassandra-operator`{{execute}}
 
 For now CassKop is not doing anything, it is waiting for CassandraCluster object creation.
 

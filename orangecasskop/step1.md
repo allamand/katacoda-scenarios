@@ -9,7 +9,7 @@ On the terminal, you must see the content listing of the CassKop GitHub reposito
 
 You should have 2 node kubernetes cluster (master and node0)
 
-`k get nodes`{{execute}}
+`kubectl get nodes`{{execute}}
 ```
 NAME      STATUS    ROLES     AGE       VERSION
 master    Ready     master    1h        v1.11.3
@@ -26,7 +26,7 @@ node01    Ready     <none>    1h        v1.11.3
 ## Check all pods are running
 
 
-`k get pods -o wide --all-namespaces`{{execute}}
+`kubectl get pods -o wide --all-namespaces`{{execute}}
 
 ## Troubleshooting
 

@@ -8,11 +8,11 @@ Now we request CassKop to have again only 1 nodes per each rack, which will remo
 
 We can see the pods creation: 
 
-`k get pods -o wide`{{execute}}
+`kubectl get pods -o wide`{{execute}}
 
 You can follow the logs of CassKop 
 
-`k logs $(k get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
+`kubectl logs $(kubectl get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
 
 > Ctrl-C to exit
 
@@ -23,7 +23,7 @@ CassKop will update the status section in the CassandCluster object.
 
 Once the Cassandra nodes are up the status must be **Done**
 
-`k describe cassandracluster`{{execute}}
+`kubectl describe cassandracluster`{{execute}}
 ```
 Status:
   Cassandra Rack Status:
@@ -43,6 +43,31 @@ Status:
 
 CassKop will make a Cassandra decommission priori to remove the Pod at Kubernetes level.
 
+When decomission is OK, then Casskop ask Kubernetes to removes the pods
+`kubectl get pods -o wide`{{execute}}
+```
+NAME                                          READY   STATUS    RESTARTS   AGE   IP          NODE     NOMINATED NODE   READINESS GATES
+cassandra-demo-dc1-rack1-0                    1/1     Running   0          19m   10.40.0.4   node01   <none>           <none>
+casskop-cassandra-operator-5fcc7df5b5-xrfcx   1/1     Running   0          19m   10.40.0.3   node01   <none>
+<none>
+```
+
+We have only One remaining pod.
+
+We check that Cassandra also has only one Node remaining
+
+`kubectl exec -ti cassandra-demo-dc1-rack1-0 nodetool status`{{execute}}
+```
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  10.40.0.4  113.73 KiB  256          100.0%            67b0c912-63af-4953-8e5f-f1c1e2badb4b  rack1
+```
+
+> we have only 1 node in rack1 from dc1
+
 ## Following
 
 You can tests more scenarios folloging our [demo
@@ -52,4 +77,4 @@ and give us your feedbacks via :
 - [our mailing list](mailto:prj.casskop.support@list.orangeportails.net)
 - https://casskop.slack.com
 
-Project source on Orange [GitHub](https://github.com/Orange-OpenSource/cassandra-k8s-operator)
+Project on Orange's [GitHub](https://github.com/Orange-OpenSource/cassandra-k8s-operator)

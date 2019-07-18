@@ -8,11 +8,11 @@ Now we request CassKop to scale nodes number in the rack
 
 We can see the pods creation: 
 
-`k get pods -o wide`{{execute}}
+`kubectl get pods -o wide`{{execute}}
 
 You can follow the logs of CassKop 
 
-`k logs $(k get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
+`kubectl logs $(kubectl get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
 
 > Ctrl-C to exit
 
@@ -23,7 +23,7 @@ CassKop will update the status section in the CassandCluster object.
 
 Once the Cassandre nodes are up the status must be **Done**
 
-`k describe cassandracluster`{{execute}}
+`kubectl describe cassandracluster`{{execute}}
 ```
 Status:
   Cassandra Rack Status:
@@ -63,7 +63,7 @@ cassandra-demo-dc1-rack1-1                           1/1     Running   0        
 
 When the ScaleUp is Done :
 
-`k describe cassandracluster`{{execute}}
+`kubectl describe cassandracluster`{{execute}}
 ```
 ...
   Last Cluster Action:         ScaleUp
@@ -85,3 +85,24 @@ CassKop will also updates labels on each pods we can see that with :
  echo cassandra-demo-dc1-rack1-$x;
  kubectl label pod cassandra-demo-dc1-rack1-$x --list | grep operation ; echo ""
 done`{{execute}}
+
+## Check Cassandra status
+
+
+Let's see how Cassandra see it's 2 nodes
+
+`kubectl exec -ti cassandra-demo-dc1-rack1-0 nodetool status`{{execute}}
+```
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  10.32.0.3  88.47 KiB  256          100.0%            0f917754-d147-4571-b53f-6aa58765222a  rack1
+UN  10.40.0.4  113.73 KiB  256          100.0%            67b0c912-63af-4953-8e5f-f1c1e2badb4b  rack1
+```
+
+> we now have 2 nodes in rack1 from dc1
+
+Using the Topology section of our CassandraCluster object we can define has many dc and racks are we need, and we can
+associate some kubernetes nodes labels in order to spread thoses racks in different location.

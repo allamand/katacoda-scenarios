@@ -20,21 +20,21 @@ examples with labels in the sample directory.
 
 With the following file, CassKop will start a 1 node Cassandra Cluster in 1 dc/rack
 
-`k apply -f ~/cassandracluster-katacoda.yaml`{{execute}}
+`kubectl apply -f ~/cassandracluster-katacoda.yaml`{{execute}}
 
 you can see the pod creation 
 
-`k get pods -o wide`{{execute}}
+`kubectl get pods -o wide`{{execute}}
 
 > It may take near 1-2 minutes for each Cassandra pod to boot
 
 you can see the log of the new Cassandra pod starting:
 
-`k logs  cassandra-demo-dc1-rack1-0`{{execute}}
+`kubectl logs  cassandra-demo-dc1-rack1-0`{{execute}}
 
 You can follow the logs of CassKop 
 
-`k logs -f $(k get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}')`{{execute}}
+`kubectl logs -f $(kubectl get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}')`{{execute}}
 
 > Ctrl-C to exit
 
@@ -45,7 +45,7 @@ CassKop will update the status section in the CassandCluster object.
 
 Once the Cassandre nodes are up the status must be **Done**
 
-`k describe cassandracluster`{{execute}}
+`kubectl describe cassandracluster`{{execute}}
 ```
 Status:
   Cassandra Rack Status:
@@ -68,6 +68,20 @@ In this example, We have deployed 1 Cassandra Pod in dc1 for rack1.
 Casskop return status for each Rack (just one in this case) and a global state **Last Cluster Action Status**
 
 By default, CassKop manage the cluster seed list with 3 seeds per datacenters.
+
+We check that Cassandra node is up and running:
+
+`kubectl exec -ti cassandra-demo-dc1-rack1-0 nodetool status`{{execute}}
+```
+Datacenter: dc1
+===============
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  10.40.0.4  113.73 KiB  256          100.0%            67b0c912-63af-4953-8e5f-f1c1e2badb4b  rack1
+```
+
+> we have only 1 node in rack1 from dc1
 
 ## Troubleshooting
 
