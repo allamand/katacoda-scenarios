@@ -12,7 +12,7 @@ We can see the pods creation:
 
 You can follow the logs of CassKop 
 
-`k logs $(k get pods -l app=cassandra-k8s-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
+`k logs $(k get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
 
 > Ctrl-C to exit
 
@@ -49,7 +49,7 @@ Status:
     cassandra-demo-dc1-rack2-0.cassandra-demo-dc1-rack2.default
 ```
 
-## Data cleanup the cluster 
+## Make a Cassandra cleanup on datas in the cluster 
 
 When the ScaleUp is Done :
 
