@@ -4,7 +4,7 @@
 
 Now we request CassKop to have again only 1 nodes per each rack, which will remove 1 Cassandra nodes.
 
-`kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": {"dc": [{"name": "dc1","nodesPerRacks":1,"rack": [{"name": "rack1"},{"name": "rack2"}]}]}}}' --type merge
+`kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": {"dc": [{"name": "dc1","nodesPerRacks":1,"rack": [{"name": "rack1"}]}]}}}' --type merge`{{execute}}`
 
 We can see the pods creation: 
 
@@ -43,3 +43,13 @@ Status:
 
 CassKop will make a Cassandra decommission priori to remove the Pod at Kubernetes level.
 
+## Following
+
+You can tests more scenarios folloging our [demo
+slides](https://orange-opensource.github.io/cassandra-k8s-operator/slides/index.html?slides=Slides-CassKop-demo.md) 
+
+and give us your feedbacks via :
+- [our mailing list](mailto:prj.casskop.support@list.orangeportails.net)
+- https://casskop.slack.com
+
+Project source on Orange [GitHub](https://github.com/Orange-OpenSource/cassandra-k8s-operator)

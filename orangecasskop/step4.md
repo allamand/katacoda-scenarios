@@ -49,13 +49,26 @@ Status:
     cassandra-demo-dc1-rack2-0.cassandra-demo-dc1-rack2.default
 ```
 
+Wait for both poth pods to be running:
+
+`kubectl get pods`{{execute}}
+```
+NAME                                                 READY   STATUS    RESTARTS   AGE
+cassandra-demo-cassandra-operator-5c79655858-72bjl   1/1     Running   0          8m37s
+cassandra-demo-dc1-rack1-0                           1/1     Running   0          8m18s
+cassandra-demo-dc1-rack1-1                           1/1     Running   0          90s
+```
+
 ## Make a Cassandra cleanup on datas in the cluster 
 
 When the ScaleUp is Done :
 
+`k describe cassandracluster`{{execute}}
 ```
+...
   Last Cluster Action:         ScaleUp
   Last Cluster Action Status:  Done
+...
 ```
 
 we can do a data cleanup using the CassKop plugin:
@@ -68,8 +81,7 @@ We can see that the status of cassandra-demo CassandraCluster object will reflec
 
 CassKop will also updates labels on each pods we can see that with :
 
-`for x in `seq 1 2`; do
- echo cassandra-demo-dc1-rack$x;
- kubectl label pod cassandra-demo-dc1-rack$x-0 --list | grep operation ; echo ""
- kubectl label pod cassandra-demo-dc1-rack$x-1 --list | grep operation ; echo ""
+`for x in 0 1; do
+ echo cassandra-demo-dc1-rack1-$x;
+ kubectl label pod cassandra-demo-dc1-rack1-$x --list | grep operation ; echo ""
 done`{{execute}}

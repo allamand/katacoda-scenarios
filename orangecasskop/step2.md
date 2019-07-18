@@ -5,7 +5,7 @@ We are going to apply directly the crd manifest, then deploy the CassKop using h
 
 ## Deploy CassKop's operator
 
-`helm install --name cassandra-demo ./helm/cassandra-operator`{{execute}}
+`helm install --name casskop --set image.tag=0.3.2-master ./helm/cassandra-operator`{{execute}}
 
 Wait some seconds for the CassKop to be up and runnin
 
