@@ -7,7 +7,7 @@ We are going to apply directly the crd manifest, then deploy the CassKop using h
 
 `helm install --name casskop --set image.tag=0.3.2-master ./helm/cassandra-operator`{{execute}}
 
-Wait some seconds for the CassKop to be up and runnin
+Wait a few seconds for the CassKop to be up and running
 
 > if you get this `Error: could not find tiller`
 > execute `helm init`{{execute}} wait a little and try again.
