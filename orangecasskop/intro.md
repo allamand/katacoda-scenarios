@@ -1,14 +1,14 @@
 # CassKop's CRD: cassandracluster
 
-CassKop define its own Custom Ressource Definition named **cassandracluster**
-This new k8s objects allow to describe the Cassandra cluster a user wants to manage.
-We can interract directly with this new objects using kubectl.
+CassKop defines its own Custom Ressource Definition named **cassandracluster**
+This new k8s object allows to describe the Cassandra cluster a user wants to manage.
+We can interract directly with this new object using kubectl.
 
 
 ## Configuration
 
-We have a very small 2 nodes kubernetes cluster with 1 master and 1 node, and we have untaint the master so that it can
-get some pod sheduled.
+We have a very small 2 nodes kubernetes cluster with 1 master and 1 node, and we have untainted the master so that it can
+get some pods scheduled.
 
 ### No persistent volume
 
