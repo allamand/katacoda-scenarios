@@ -33,3 +33,4 @@ node01    Ready     <none>    1h        v1.11.3
 If needed you can check for events on the cluster: 
 
 `kubectl get events --sort-by .metadata.creationTimestamp --all-namespaces`{{execute}}
+
