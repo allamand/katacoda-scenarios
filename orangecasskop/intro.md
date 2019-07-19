@@ -21,4 +21,3 @@ level=warning msg="[cassandra-demo]: No Spec.DataCapacity was specified -> You C
 DATA!!!!!"
 ```
 
-
