@@ -2,15 +2,15 @@
 
 # ScaleUp the cluster
 
-Now we request CassKop to scale nodes number in the rack
+Now we request CassKop to add 1 node in the rack rack1
 
 `kubectl patch cassandracluster cassandra-demo -p '{"spec":{"topology": {"dc": [{"name": "dc1","nodesPerRacks":2,"rack": [{"name": "rack1"}]}]}}}' --type merge`{{execute}}
 
-We can see the pods creation: 
+We can see the pod creation with the command kubectl get pods below: 
 
 `kubectl get pods -o wide`{{execute}}
 
-You can follow the logs of CassKop 
+We can follow the logs of CassKop with the command kubectl logs below :
 
 `kubectl logs $(kubectl get pods -l app=cassandra-operator -o jsonpath='{range .items[*]}{.metadata.name}{" "}') -f`{{execute}}
 
@@ -21,7 +21,7 @@ You can follow the logs of CassKop
 
 CassKop will update the status section in the CassandCluster object.
 
-Once the Cassandre nodes are up the status must be **Done**
+Once the Cassandre nodes are up, the status must be **Done**
 
 `kubectl describe cassandracluster`{{execute}}
 ```
@@ -49,7 +49,7 @@ Status:
     cassandra-demo-dc1-rack2-0.cassandra-demo-dc1-rack2.default
 ```
 
-Wait for both poth pods to be running:
+Wait for both pods to be running:
 
 `kubectl get pods`{{execute}}
 ```
@@ -77,9 +77,9 @@ we can do a data cleanup using the CassKop plugin:
 `kubectl casskop cleanup --prefix cassandra-demo-dc1`{{execute}}
 
 
-We can see that the status of cassandra-demo CassandraCluster object will reflect the operation status of each pods.
+We can see that the status of cassandra-demo CassandraCluster object will reflect the operation status of each pod.
 
-CassKop will also updates labels on each pods we can see that with :
+CassKop will also update the labels on each pod; we can see that with :
 
 `for x in 0 1; do
  echo cassandra-demo-dc1-rack1-$x;
@@ -89,7 +89,7 @@ done`{{execute}}
 ## Check Cassandra status
 
 
-Let's see how Cassandra see it's 2 nodes
+Let's see how Cassandra see it's 2 nodes :
 
 `kubectl exec -ti cassandra-demo-dc1-rack1-0 nodetool status`{{execute}}
 ```
@@ -104,5 +104,5 @@ UN  10.40.0.4  113.73 KiB  256          100.0%            67b0c912-63af-4953-8e5
 
 > we now have 2 nodes in rack1 from dc1
 
-Using the Topology section of our CassandraCluster object we can define has many dc and racks are we need, and we can
-associate some kubernetes nodes labels in order to spread thoses racks in different location.
+Using the Topology section of our CassandraCluster object we can define as many dc and racks as we need, and we can
+associate some kubernetes nodes labels in order to spread those racks in different locations.
