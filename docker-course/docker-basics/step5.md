@@ -2,9 +2,12 @@ While running a single container is useful, it is far more useful to be able to 
 
 ## linking services together with Docker Compose
 
+Cleanup previous deployment
+`docker rm -f mywebsite`{{execute}}
+
 Analyze the following `docker-compose.yml` file. 
 
-<pre class="file" data-filename="Dockerfile" data-target="append">
+<pre class="file" data-filename="docker-compose.yml" data-target="append">
 version: '2'
 
 services:

@@ -47,6 +47,6 @@
     "files": ["Dockerfile", "docker-compose.yml"],
     "backend": {
         "port": 80,
-        "imageid": "docker"
+        "imageid": "ubuntu"
     }
 }

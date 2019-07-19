@@ -47,3 +47,7 @@ If we request the Proxy with the specific **Host** header `curl -H "Host: [[HOST
 
 We can check logs on traefik `docker logs traefik_traefik_1`{{execute}}
 
+
+Scale the service:
+`docker-compose -p test2 -f docker-compose-test2.yml scale test2=5`{{execute}}
+
