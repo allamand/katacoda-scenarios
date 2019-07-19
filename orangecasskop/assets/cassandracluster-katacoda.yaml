@@ -21,11 +21,11 @@ spec:
   runAsUser: 1000
   resources:         
     requests:
-      cpu: '1'
-      memory: 2Gi
+      cpu: '2'
+      memory: 1Gi
     limits:
-      cpu: '1'
-      memory: 2Gi
+      cpu: '2'
+      memory: 1Gi
   topology:
     dc:
       - name: dc1
